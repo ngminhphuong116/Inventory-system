@@ -1,0 +1,185 @@
+/* ── SIDEBAR ── */
+
+.vpt-sidebar.ant-layout-sider {
+  position: relative;
+  height: 100dvh;
+  flex: 0 0 auto;
+  overflow: hidden;
+  background: #011744 !important;
+  border-right: none;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease; /* Thêm hiệu ứng chuyển đổi mượt mà */
+}
+
+.vpt-sidebar .ant-layout-sider-children {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── CLOCK WRAPPER ── */
+.vpt-sidebar-userbox {
+  padding: 20px 16px 10px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vpt-clock-wrap {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Dòng giờ: số lớn + giây nhỏ canh baseline */
+.vpt-clock-time {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.vpt-clock-hm {
+  font-size: 34px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 3px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* Giây nhỏ hơn, mờ hơn */
+.vpt-clock-ss {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Dòng ngày tháng nhỏ ở dưới */
+.vpt-clock-date {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.5px;
+}
+
+/* ── USER PILL BADGE ── */
+.vpt-role-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
+}
+
+.vpt-role-pill .anticon {
+  font-size: 12.5px;
+  color: #38bdf8; /* Màu xanh cyan tạo điểm nhấn nhẹ */
+}
+
+/* Nút tròn thu nhỏ */
+.vpt-role-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+/* ── MENU GROUPS ── */
+.vpt-sidebar-menu.ant-menu {
+  background: transparent !important;
+  border-inline-end: none !important;
+  padding: 10px 8px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Ghi đè chữ tiêu đề nhóm */
+.vpt-sidebar-menu .ant-menu-item-group-title {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 14px 12px 5px 12px !important;
+}
+
+.vpt-sidebar-menu .ant-menu-item {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 8px;
+  margin: 1px 0 !important;
+  height: 38px;
+  line-height: 38px;
+  width: 100%;
+  transition: background 0.15s, color 0.15s;
+}
+
+.vpt-sidebar-menu .ant-menu-item .anticon {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.15s;
+}
+
+.vpt-sidebar-menu .ant-menu-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+.vpt-sidebar-menu .ant-menu-item:hover .anticon {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Active */
+.vpt-sidebar-menu .ant-menu-item-selected {
+  background: #2563eb !important; /* Màu xanh thương hiệu rực rỡ */
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.vpt-sidebar-menu .ant-menu-item-selected .anticon {
+  color: #ffffff !important;
+}
+
+/* ── COLLAPSED STATE ── */
+.ant-layout-sider-collapsed .vpt-sidebar-userbox {
+  padding: 20px 8px 10px 8px;
+}
+
+/* ── 🌟 DARK MODE HOÀN CHỈNH (ĐÃ FIX THEO CẤU TRÚC ANT DESIGN) ── */
+
+/* Khi Sider có class .ant-layout-sider-dark (chế độ ban đêm kích hoạt) */
+.vpt-sidebar.ant-layout-sider-dark {
+  background: #151f32 !important; /* Màu nền xám sẫm mịn màng đỡ chói mắt */
+  
+  /* 1. Đẩy tầng hiển thị lên trên để không bị khung content che khuất bóng */
+  z-index: 10 !important;
+
+  /* 2. Tạo đường kẻ dọc phát sáng trắng mảnh tinh tế */
+  border-right: 1px solid rgba(255, 255, 255, 0.18) !important;
+
+  /* 3. Đổ bóng lan tỏa rộng sang phải tạo hiệu ứng hắt đèn LED màu trắng mờ cực ảo */
+  box-shadow: 8px 0 20px rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Làm bừng sáng nhẹ các menu item khi ở trong môi trường tối hẳn */
+.vpt-sidebar.ant-layout-sider-dark .vpt-sidebar-menu .ant-menu-item:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+}

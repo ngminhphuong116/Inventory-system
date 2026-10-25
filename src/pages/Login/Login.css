@@ -1,0 +1,488 @@
+.login-page {
+  --login-navy: #172944;
+  --login-navy-deep: #102038;
+  --login-panel: #f7f4ef;
+  --login-panel-strong: #ffffff;
+  --login-gold: #d8bf82;
+  --login-muted-blue: #91a9c8;
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
+  grid-template-columns: minmax(500px, 54%) minmax(460px, 46%);
+  overflow: hidden;
+  color: var(--login-text);
+  background: var(--login-panel);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.login-showcase {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  color: #f7f9fc;
+  background: linear-gradient(
+    142deg,
+    #354a67 0%,
+    var(--login-navy) 32%,
+    var(--login-navy-deep) 100%
+  );
+}
+
+.login-showcase::after {
+  position: absolute;
+  right: 7%;
+  bottom: 7%;
+  width: 35%;
+  height: 1px;
+  background: rgba(216, 191, 130, 0.32);
+  content: "";
+}
+
+.login-showcase-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  flex-direction: column;
+  padding: clamp(48px, 6.5vw, 104px) clamp(48px, 7vw, 112px)
+    clamp(40px, 5vw, 72px);
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.login-brand-logo {
+  display: block;
+  width: 72px;
+  height: 51px;
+  object-fit: contain;
+}
+
+.login-brand-name {
+  color: #f5f7fb;
+  font-size: clamp(18px, 1.5vw, 26px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.login-product-copy {
+  width: min(100%, 640px);
+  margin-block: auto;
+  padding-block: 56px;
+}
+
+.login-kicker,
+.login-access-kicker,
+.login-workspace-label {
+  margin: 0;
+  font-weight: 600;
+}
+
+.login-kicker {
+  margin-bottom: 18px;
+  color: var(--login-gold);
+  font-size: 14px;
+}
+
+.login-product-copy h1 {
+  max-width: 640px;
+  margin: 0;
+  color: #e8edf5;
+  font-size: clamp(52px, 5.25vw, 86px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.login-product-copy h1 strong {
+  display: block;
+  margin-top: 8px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.login-product-description {
+  max-width: 540px;
+  margin: 30px 0 0;
+  color: #aebbd0;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.login-operation-cue {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 38px;
+}
+
+.login-scan-frame {
+  position: relative;
+  display: grid;
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  place-items: center;
+  border: 1px solid rgba(216, 191, 130, 0.56);
+  border-radius: 12px;
+  color: var(--login-gold);
+  font-size: 29px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.login-scan-frame::before,
+.login-scan-frame::after {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  content: "";
+}
+
+.login-scan-frame::before {
+  top: -3px;
+  left: -3px;
+  border-top: 3px solid var(--login-gold);
+  border-left: 3px solid var(--login-gold);
+}
+
+.login-scan-frame::after {
+  right: -3px;
+  bottom: -3px;
+  border-right: 3px solid var(--login-gold);
+  border-bottom: 3px solid var(--login-gold);
+}
+
+.login-operation-cue p {
+  max-width: 270px;
+  margin: 0;
+  color: #9dacc2;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.login-operation-cue strong {
+  display: block;
+  color: #f2f5fa;
+  font-weight: 500;
+}
+
+.login-workspace-label {
+  color: #7f92ad;
+  font-size: 12px;
+}
+
+.login-access {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
+  place-items: center;
+  overflow-y: auto;
+  padding: 48px clamp(44px, 7vw, 116px);
+  background: var(--login-panel);
+}
+
+.login-access-inner {
+  width: min(100%, 450px);
+}
+
+.login-heading {
+  margin-bottom: 34px;
+}
+
+.login-access-kicker {
+  margin-bottom: 16px;
+  color: #466b9d;
+  font-size: 13px;
+}
+
+.login-heading h2 {
+  margin: 0;
+  color: #132035;
+  font-size: clamp(34px, 3vw, 42px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.login-heading > p:last-child {
+  margin: 10px 0 0;
+  color: #596273;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.login-alert.ant-alert {
+  margin-bottom: 22px;
+  border-radius: 8px;
+}
+
+.login-form .ant-form-item {
+  margin-bottom: 18px;
+}
+
+.login-form .ant-form-item-label {
+  padding-bottom: 8px;
+}
+
+.login-form .ant-form-item-label > label {
+  color: #384253;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.login-form .ant-input-affix-wrapper {
+  min-height: 56px;
+  padding-inline: 16px;
+  border-color: #d9dde4;
+  border-radius: 8px;
+  background: var(--login-panel-strong);
+  box-shadow: none;
+}
+
+.login-form .ant-input-affix-wrapper:hover {
+  border-color: #8da3c0;
+}
+
+.login-form .ant-input-affix-wrapper-focused {
+  border-color: #1a2d4d;
+  box-shadow: 0 0 0 3px rgba(26, 45, 77, 0.12);
+}
+
+.login-form .ant-input-prefix {
+  margin-inline-end: 12px;
+  color: #929cac;
+}
+
+.login-form .ant-input,
+.login-form .ant-input::placeholder {
+  font-size: 16px;
+}
+
+.login-form .ant-input::placeholder {
+  color: #6e7683;
+}
+
+.login-submit-item.ant-form-item {
+  margin-top: 26px;
+  margin-bottom: 0;
+}
+
+.login-submit-item .ant-btn {
+  height: 56px;
+  border-radius: 8px;
+  background: #1a2d4d;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(26, 45, 77, 0.16);
+}
+
+.login-submit-item .ant-btn:hover,
+.login-submit-item .ant-btn:focus-visible {
+  background: #24436d !important;
+}
+
+.login-firebase-recovery {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid #dfe2e6;
+}
+
+.login-firebase-recovery p {
+  margin: 0;
+  color: #626c7b;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.login-change-firebase-button.ant-btn {
+  height: auto;
+  flex: 0 0 auto;
+  padding: 4px 0;
+  color: #355b8c;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login-change-firebase-button.ant-btn:hover,
+.login-change-firebase-button.ant-btn:focus-visible {
+  color: #1a2d4d !important;
+  background: transparent !important;
+}
+
+.login-firebase-warning-icon {
+  color: #d4380d;
+}
+
+.login-access-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #dfe2e6;
+  color: #626c7b;
+  font-size: 12px;
+}
+
+.login-access-footer span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+@media (max-width: 960px) {
+  .login-page {
+    grid-template-columns: minmax(320px, 42%) minmax(420px, 58%);
+  }
+
+  .login-showcase-inner {
+    padding-inline: 40px;
+  }
+
+  .login-brand-logo {
+    width: 58px;
+    height: 41px;
+  }
+
+  .login-brand-name {
+    font-size: 18px;
+  }
+
+  .login-product-copy h1 {
+    font-size: 52px;
+  }
+}
+
+@media (max-width: 760px) {
+  .login-page {
+    display: block;
+    min-height: 100dvh;
+    overflow-y: auto;
+  }
+
+  .login-showcase,
+  .login-showcase-inner {
+    min-height: auto;
+  }
+
+  .login-showcase-inner {
+    padding: 22px 24px 24px;
+  }
+
+  .login-brand-logo {
+    width: 48px;
+    height: 34px;
+  }
+
+  .login-brand-name {
+    font-size: 16px;
+  }
+
+  .login-product-copy {
+    padding: 24px 0 0;
+  }
+
+  .login-kicker {
+    margin-bottom: 12px;
+    font-size: 11px;
+  }
+
+  .login-product-copy h1 {
+    font-size: 34px;
+    line-height: 1;
+  }
+
+  .login-product-description {
+    display: none;
+  }
+
+  .login-operation-cue,
+  .login-workspace-label {
+    display: none;
+  }
+
+  .login-access {
+    min-height: auto;
+    place-items: start center;
+    padding: 32px 24px 40px;
+  }
+
+  .login-heading {
+    margin-bottom: 28px;
+  }
+
+  .login-heading h2 {
+    font-size: 32px;
+  }
+
+  .login-firebase-recovery {
+    align-items: flex-start;
+  }
+
+  .login-change-firebase-button.ant-btn {
+    text-align: right;
+  }
+}
+
+@media (max-height: 720px) and (min-width: 761px) {
+  .login-showcase-inner {
+    padding-block: 36px;
+  }
+
+  .login-product-copy {
+    padding-block: 32px;
+  }
+
+  .login-product-copy h1 {
+    font-size: 58px;
+  }
+
+  .login-product-description {
+    margin-top: 20px;
+  }
+
+  .login-operation-cue {
+    margin-top: 24px;
+  }
+
+  .login-access {
+    align-items: start;
+    padding-block: 42px;
+  }
+
+  .login-heading {
+    margin-bottom: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .login-product-copy {
+    animation: login-copy-enter 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes login-copy-enter {
+    from {
+      opacity: 0.01;
+      transform: translateY(14px);
+      filter: blur(3px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+}

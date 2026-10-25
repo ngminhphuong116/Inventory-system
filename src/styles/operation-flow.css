@@ -1,0 +1,189 @@
+.operation-page,
+.inventory-page {
+  --operation-primary: #1d4ed8;
+  --operation-primary-hover: #1e40af;
+  --operation-success: #15803d;
+  --operation-border: rgba(15, 23, 42, 0.1);
+  --operation-muted: #64748b;
+}
+
+.operation-page__header,
+.inventory-page__header {
+  margin-bottom: 24px;
+}
+
+.operation-page__title,
+.inventory-page__title {
+  margin: 0;
+  color: #0f172a;
+  font-size: 32px;
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.operation-page--dark .operation-page__title,
+.inventory-page--dark .inventory-page__title {
+  color: #f8fafc;
+}
+
+.operation-grid {
+  align-items: stretch;
+}
+
+.operation-card,
+.inventory-card {
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--operation-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.operation-card .ant-card-head,
+.inventory-card .ant-card-head {
+  min-height: 56px;
+  padding-inline: 22px;
+  border-bottom-color: var(--operation-border);
+}
+
+.operation-card .ant-card-head-title,
+.inventory-card .ant-card-head-title {
+  font-weight: 650;
+}
+
+.operation-card .ant-card-body {
+  padding: 22px;
+}
+
+.operation-form .ant-form-item {
+  margin-bottom: 18px;
+}
+
+.operation-form .ant-form-item-label > label {
+  height: auto;
+  font-weight: 600;
+}
+
+.operation-form .ant-input,
+.operation-form .ant-input-number,
+.operation-form .ant-picker,
+.operation-form .ant-select-single,
+.inventory-filter .ant-input,
+.inventory-filter .ant-select-single {
+  min-height: 40px;
+}
+
+.operation-form .ant-input-number,
+.operation-form .ant-picker,
+.operation-form .ant-select,
+.inventory-filter .ant-select {
+  width: 100%;
+}
+
+.operation-form .ant-select-single .ant-select-selector,
+.inventory-filter .ant-select-single .ant-select-selector {
+  min-height: 40px;
+  align-items: center;
+}
+
+.operation-form__submit.ant-btn,
+.app-action-button.ant-btn {
+  min-height: 40px;
+  padding-inline: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.operation-form__submit.ant-btn {
+  min-height: 44px;
+}
+
+.app-action-button--primary.ant-btn,
+.operation-form__submit.ant-btn {
+  color: #ffffff;
+  border-color: var(--operation-primary);
+  background: var(--operation-primary);
+  box-shadow: 0 3px 8px rgba(29, 78, 216, 0.2);
+}
+
+.app-action-button--primary.ant-btn:hover,
+.operation-form__submit.ant-btn:hover {
+  color: #ffffff !important;
+  border-color: var(--operation-primary-hover) !important;
+  background: var(--operation-primary-hover) !important;
+}
+
+.app-action-button--success.ant-btn {
+  color: #ffffff;
+  border-color: var(--operation-success);
+  background: var(--operation-success);
+}
+
+.app-action-button--success.ant-btn:hover {
+  color: #ffffff !important;
+  border-color: #166534 !important;
+  background: #166534 !important;
+}
+
+.operation-table .ant-table-thead > tr > th,
+.inventory-table .ant-table-thead > tr > th {
+  min-height: 48px;
+  padding-block: 13px;
+  font-weight: 650;
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.operation-table .ant-table-tbody > tr > td,
+.inventory-table .ant-table-tbody > tr > td {
+  padding-block: 13px;
+  vertical-align: middle;
+}
+
+.operation-page--dark .operation-card,
+.inventory-page--dark .inventory-card {
+  --operation-border: rgba(226, 232, 240, 0.12);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+}
+
+.operation-page--dark .operation-table .ant-table-thead > tr > th,
+.inventory-page--dark .inventory-table .ant-table-thead > tr > th {
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.inventory-page__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.inventory-page__account {
+  display: block;
+  margin-top: 4px;
+  color: var(--operation-muted);
+  font-size: 13px;
+}
+
+.inventory-filter.ant-form {
+  width: 100%;
+  gap: 12px 0;
+}
+
+@media (max-width: 767px) {
+  .operation-page__title,
+  .inventory-page__title {
+    font-size: 27px;
+  }
+
+  .operation-card .ant-card-body,
+  .inventory-card .ant-card-body {
+    padding: 18px;
+  }
+
+  .inventory-page__toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

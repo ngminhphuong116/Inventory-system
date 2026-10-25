@@ -1,0 +1,111 @@
+.product-form-modal {
+  --product-modal-border: #e7ebf0;
+}
+
+.product-form-modal .ant-modal-content {
+  overflow: visible;
+  padding: 0;
+}
+
+.product-form-modal .ant-modal-header {
+  margin: 0;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--product-modal-border);
+}
+
+.product-form-modal .ant-modal-close {
+  top: 14px;
+  right: 18px;
+}
+
+.product-form-grid .ant-form-item {
+  margin-bottom: 18px;
+}
+
+.product-form-grid .ant-form-item-label {
+  min-height: 30px;
+  padding-bottom: 6px;
+}
+
+.product-form-grid .ant-form-item-label > label {
+  height: auto;
+  line-height: 1.45;
+}
+
+.product-form-grid .ant-input,
+.product-form-grid .ant-input-number,
+.product-form-grid .ant-select-selector {
+  min-height: 40px;
+}
+
+.product-form-grid .ant-input-number {
+  width: 100%;
+}
+
+.product-form-grid .ant-input-number-input {
+  height: 38px;
+}
+
+.product-form-grid .ant-form-item-extra {
+  min-height: 20px;
+  padding-top: 4px;
+  color: #66758a;
+  font-size: 12px;
+}
+
+.product-modal-action.ant-btn {
+  min-width: 124px;
+  height: 40px;
+}
+
+.product-directory-option {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.product-directory-option > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-directory-option .ant-tag {
+  flex: 0 0 auto;
+  margin: 0;
+  color: #52647a;
+  font-size: 10px;
+}
+
+.product-directory-popup .ant-select-item-empty {
+  padding: 20px 12px;
+}
+
+.product-directory-create {
+  position: relative;
+  padding: 10px 12px 12px;
+  border-top: 1px solid #e7ebf0;
+  background: #fff;
+}
+
+.product-directory-create .ant-input,
+.product-directory-create .ant-btn {
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  .product-form-modal {
+    max-width: calc(100vw - 24px);
+    margin: 12px auto;
+  }
+
+  .product-form-modal .ant-modal-header,
+  .product-form-modal .ant-modal-footer {
+    padding-inline: 16px;
+  }
+
+  .product-modal-action.ant-btn {
+    min-width: 0;
+  }
+}

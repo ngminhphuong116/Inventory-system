@@ -1,0 +1,127 @@
+:root {
+  --app-font-family: "Be Vietnam Pro", "Inter", "Segoe UI", Arial, sans-serif;
+  --app-font-size: 14px;
+  --app-line-height: 1.55;
+}
+
+* {
+  box-sizing: border-box;
+  letter-spacing: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  font-family: var(--app-font-family);
+  font-size: var(--app-font-size);
+  font-weight: 400;
+  line-height: var(--app-line-height);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: #f5f5f5;
+  color: #333;
+}
+
+body.warehouse-shell-active {
+  overflow: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  line-height: 1.25;
+}
+
+h1,
+h2 {
+  letter-spacing: -0.015em;
+}
+
+.ant-app,
+.ant-layout,
+.ant-typography,
+.ant-btn,
+.ant-input,
+.ant-input-number,
+.ant-select,
+.ant-picker,
+.ant-table,
+.ant-modal,
+.ant-drawer,
+.ant-popover,
+.ant-tooltip,
+.ant-dropdown,
+.ant-menu,
+.ant-form,
+.ant-message,
+.ant-notification {
+  font-family: var(--app-font-family);
+}
+
+.ant-btn,
+.ant-menu-item,
+.ant-menu-submenu-title,
+.ant-form-item-label > label,
+.ant-select-selection-item,
+.ant-tabs-tab {
+  font-weight: 500;
+}
+
+.ant-card-head-title,
+.ant-modal-title,
+.ant-drawer-title,
+.ant-table-thead > tr > th {
+  font-weight: 600;
+}
+
+.ant-statistic-title {
+  font-weight: 500;
+}
+
+.ant-statistic-content,
+.ant-input-number-input {
+  font-variant-numeric: tabular-nums;
+}
+
+.ant-tooltip,
+.ant-tooltip-inner {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.recharts-wrapper,
+.recharts-wrapper text,
+.recharts-default-tooltip,
+.recharts-tooltip-wrapper {
+  font-family: var(--app-font-family) !important;
+}
+
+.recharts-wrapper text {
+  font-size: 12px;
+  font-weight: 400;
+}

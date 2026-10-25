@@ -1,0 +1,211 @@
+/* ── NÚT ĐẾM SỐ (NÚT BẤM CÓ HIỆU ỨNG) ── */
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px; /* Bo tròn góc nút */
+  color: var(--accent); /* Đổ màu chữ bằng biến CSS (màu nổi bật) */
+  background: var(--accent-bg); /* Đổ màu nền nút */
+  border: 2px solid transparent;
+  transition: border-color 0.3s; /* Hiệu ứng đổi màu viền mượt mà (0.3 giây) */
+  margin-bottom: 24px;
+
+  /* Khi người dùng rê chuột vào nút */
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  /* Khi người dùng dùng phím Tab để focus vào nút */
+  &:focus-visible {
+    outline: 2px solid var(--accent); /* Viền sáng bọc ngoài */
+    outline-offset: 2px; /* Khoảng cách từ viền đến nút */
+  }
+}
+
+/* ── KHU VỰC HERO (PHẦN HIỂN THỊ LOGO 3D Ở GIỮA MÀN HÌNH) ── */
+.hero {
+  position: relative; /* Đặt làm khung gốc để định vị các logo bên trong */
+
+  /* Đưa các logo vào giữa khung */
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  /* Khối bóng mờ / nền móng dưới cùng của logo */
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  /* Các logo Framework (React/Vue...) và logo Vite xếp chồng lên nhau */
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  /* Hiệu ứng nghiêng và xoay 3D cực ảo cho logo Framework */
+  .framework {
+    z-index: 1; /* Nổi lên trên */
+    top: 34px;
+    height: 28px;
+    /* Dùng transform 3D để vát chéo và xoay logo */
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(1.4);
+  }
+
+  /* Hiệu ứng nghiêng và xoay 3D cho logo Vite (Nằm dưới logo framework) */
+  .vite {
+    z-index: 0; /* Nằm dưới */
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.8);
+  }
+}
+
+/* ── KHU VỰC NỘI DUNG CHÍNH GIỮA TRANG ── */
+#center {
+  display: flex;
+  flex-direction: column; /* Xếp nội dung theo chiều dọc */
+  gap: 25px; /* Khoảng cách giữa các thành phần */
+  place-content: center; /* Căn giữa */
+  place-items: center; /* Căn giữa */
+  flex-grow: 1; /* Đẩy khối này chiếm hết không gian trống */
+
+  /* Chỉnh lại giao diện cho màn hình nhỏ (Mobile/Tablet dưới 1024px) */
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px; /* Thu hẹp khoảng cách lại */
+  }
+}
+
+/* ── KHU VỰC "BƯỚC TIẾP THEO" (NEXT STEPS) DƯỚI CÙNG ── */
+#next-steps {
+  display: flex; /* Dàn hàng ngang */
+  border-top: 1px solid var(--border); /* Kẻ viền xám mờ ở trên */
+  text-align: left;
+
+  /* Bắt các khối con (div) bên trong chia đều không gian bằng nhau */
+  & > div {
+    flex: 1 1 0; 
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  /* Chỉnh kích thước icon của từng phần */
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Nếu là màn hình Mobile: Bỏ dàn ngang, chuyển thành xếp dọc và chữ căn giữa */
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ── KHU VỰC CHỨA TÀI LIỆU (Nằm bên trong Next Steps) ── */
+#docs {
+  border-right: 1px solid var(--border); /* Kẻ một đường viền xám mờ ngăn cách ở bên phải */
+
+  /* Trên mobile thì bỏ viền phải đi, kẻ viền dưới cho hợp lý do đã chuyển sang xếp dọc */
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* ── DANH SÁCH CÁC NÚT BẤM/LINK (Github, Tài liệu, Cộng đồng...) ── */
+#next-steps ul {
+  list-style: none; /* Bỏ dấu chấm tròn mặc định của thẻ ul */
+  padding: 0;
+  display: flex; /* Dàn ngang các nút */
+  gap: 8px; /* Khoảng cách giữa các nút */
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  /* Giao diện của 1 thẻ link (nút bấm) */
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px; /* Bo góc nút */
+    background: var(--social-bg); /* Nền nút nhạt */
+    display: flex;
+    padding: 6px 12px;
+    align-items: center; /* Căn giữa icon và chữ */
+    gap: 8px; 
+    text-decoration: none; /* Xóa dấu gạch chân của link */
+    transition: box-shadow 0.3s; /* Hiệu ứng nổi bóng mượt mà */
+
+    /* Khi rê chuột: Nút nổi bóng xịn xò */
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  /* Chỉnh lại trên Mobile: Dàn thành 2 cột cho gọn */
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap; /* Nếu tràn thì tự rớt dòng */
+    justify-content: center;
+
+    /* Cho mỗi nút chiếm 50% màn hình trừ đi 8px khoảng cách */
+    li {
+      flex: 1 1 calc(50% - 8px); 
+    }
+
+    /* Ép thẻ a (nút bấm) rộng kín 100% cái khung của nó */
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+/* ── KHOẢNG TRỐNG ĐỆM PHÍA DƯỚI CÙNG ── */
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px; /* Mobile thì đệm hẹp lại */
+  }
+}
+
+/* ── HIỆU ỨNG TAM GIÁC TRANG TRÍ (TICKS) ── */
+.ticks {
+  position: relative;
+  width: 100%;
+
+  /* Sử dụng CSS giả (::before, ::after) để vẽ hình tam giác bằng kỹ thuật kẻ viền (border) */
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  /* Tam giác trang trí ở đầu bên trái */
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  /* Tam giác trang trí ở mép bên phải */
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}

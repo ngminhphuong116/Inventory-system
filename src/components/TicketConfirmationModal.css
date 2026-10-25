@@ -1,0 +1,22 @@
+.ticket-confirmation-content {
+  display: grid;
+  gap: 18px;
+}
+
+.ticket-confirmation-totals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 16px 28px;
+  color: #52647a;
+}
+
+.ticket-confirmation-totals strong {
+  margin-left: 6px;
+  color: #172944;
+}
+
+.ticket-confirmation-modal .ant-modal-footer .ant-btn {
+  min-width: 138px;
+  height: 40px;
+}
