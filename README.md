@@ -46,6 +46,14 @@ Các thao tác thay đổi tồn kho đi qua chứng từ. Phiếu bị hủy đ
 
 ## Ảnh giao diện
 
+Các ảnh nghiệp vụ bên dưới được chụp từ **chính các component giao diện của project**, trong một phiên tài liệu ngoại tuyến có dữ liệu minh họa cục bộ. Tên hàng, đối tác, email `example.com` và số liệu trong ảnh đều là ví dụ, không phải dữ liệu doanh nghiệp, tài khoản được cấp sẵn hay dữ liệu đi kèm bộ cài. Phiên chụp không kết nối Firebase và không sửa giao diện/mã nghiệp vụ của bản phát hành.
+
+### Tổng quan kho hàng
+
+![Dashboard với chỉ số kho hàng, nhịp vận hành 7 ngày và phân bổ tồn kho — dữ liệu minh họa](docs/screenshots/dashboard.png)
+
+Các ảnh chi tiết nằm ngay trong phần hướng dẫn [Sản phẩm](#sản-phẩm), [Nhập kho](#nhập-kho), [Xuất kho](#xuất-kho), [Bán hàng POS](#bán-hàng-pos), [Lịch sử](#lịch-sử), [Báo cáo](#báo-cáo), [Cài đặt](#cài-đặt-tài-khoản-và-giao-diện) và [Sao lưu & khôi phục](#sao-lưu-và-khôi-phục).
+
 ### Thiết lập cơ sở dữ liệu
 
 ![Màn hình thiết lập Firebase trên máy mới](docs/screenshots/firebase-setup.png)
@@ -54,7 +62,7 @@ Các thao tác thay đổi tồn kho đi qua chứng từ. Phiếu bị hủy đ
 
 ![Màn hình đăng nhập Quản lý kho hàng](docs/screenshots/login.png)
 
-Đây là ảnh thật từ bản ứng dụng đã đóng gói, chụp bằng hồ sơ kiểm thử riêng. Không có tài khoản hoặc dữ liệu doanh nghiệp trong ảnh. Sau khi chủ project tự cấu hình và đăng nhập, các màn hình Dashboard, Sản phẩm, Nhập kho, Xuất kho, Bán hàng, Lịch sử, Báo cáo và Cài đặt đã được mở trực tiếp để đối chiếu hướng dẫn bên dưới. Ảnh các trang đang chứa email, đối tác và chứng từ thật không được đưa vào gói công khai.
+Hai ảnh thiết lập và đăng nhập được chụp từ bản ứng dụng đã đóng gói bằng hồ sơ kiểm thử riêng. Trước khi tạo bộ ảnh minh họa, tám trang trong phiên Admin do chủ project đăng nhập cũng đã được mở trực tiếp để đối chiếu hướng dẫn. Ảnh toàn trang chứa email, đối tác và chứng từ thật không được đưa vào gói công khai.
 
 ## Yêu cầu sử dụng
 
@@ -174,6 +182,8 @@ Số lượng và doanh thu hiển thị phụ thuộc dữ liệu/thời điể
 
 ### Sản phẩm
 
+![Danh mục sản phẩm với tìm kiếm, bộ lọc, giá và tồn kho — dữ liệu minh họa](docs/screenshots/products.png)
+
 1. Vào **Sản phẩm**, tìm theo mã/tên hàng hoặc lọc theo danh mục, tình trạng tồn.
 2. Admin bấm **Thêm mã hàng mới** để tạo mã hàng với tên, đơn vị tính, danh mục, giá nhập, giá bán, tồn tối thiểu; bổ sung nhà cung cấp và ghi chú nếu cần.
 3. Chỉnh sửa thông tin bằng thao tác sửa trong danh sách. Mã hàng phải duy nhất.
@@ -183,6 +193,8 @@ Số lượng và doanh thu hiển thị phụ thuộc dữ liệu/thời điể
 Trạng thái tồn được tính từ số lượng và tồn tối thiểu: hết hàng khi số lượng không dương; các mức cảnh báo được xác định theo ngưỡng tồn đã đặt. Nên cấu hình ngưỡng phù hợp với từng mã hàng.
 
 ### Nhập kho
+
+![Form lập phiếu nhập hàng và danh sách phiếu nhập kho — dữ liệu minh họa](docs/screenshots/import-stock.png)
 
 Ở **Nhập kho**, bên trái là **Lập phiếu nhập hàng**, bên phải là **Danh sách phiếu nhập kho**.
 
@@ -195,6 +207,8 @@ Danh sách phiếu hỗ trợ tra cứu, mở phiếu in và hủy theo quyền.
 
 ### Xuất kho
 
+![Form lập phiếu xuất và danh sách hóa đơn xuất kho — dữ liệu minh họa](docs/screenshots/export-stock.png)
+
 Ở **Xuất kho**, bên trái là **Lập phiếu xuất hàng**, bên phải là **Danh sách hóa đơn xuất kho**.
 
 1. Chọn **Ngày xuất**, nhập **Mã Hóa đơn** hoặc để trống để tự sinh.
@@ -205,6 +219,8 @@ Danh sách phiếu hỗ trợ tra cứu, mở phiếu in và hủy theo quyền.
 Khi ghi thành công, tồn giảm; hủy phiếu xuất hợp lệ sẽ hoàn trả lượng tồn tương ứng.
 
 ### Bán hàng POS
+
+![Quầy POS với bộ chọn sản phẩm, giỏ hàng, giảm giá và xác nhận hóa đơn — phiên minh họa](docs/screenshots/sales-pos.png)
 
 1. Mở **Bán hàng**, chọn thời gian, số hóa đơn nếu cần và tên khách; tên khách để trống dùng khách bán lẻ vãng lai.
 2. Tìm sản phẩm, xem tồn hiện tại, nhập số lượng và thêm vào giỏ.
@@ -219,9 +235,13 @@ Khi giỏ trống, **Thêm vào giỏ**, **Áp dụng** hoặc **Xác nhận & X
 
 ### Lịch sử
 
+![Lịch sử biến động kho với bộ lọc giao dịch, ngày và trạng thái — dữ liệu minh họa](docs/screenshots/history.png)
+
 Mở **Lịch sử** để tra cứu nhập, xuất và bán hàng. Ô tìm kiếm có nhãn **Tìm theo hóa đơn, sản phẩm, đối tác...**; ba bộ lọc bên cạnh lần lượt là loại giao dịch, ngày và trạng thái. Kiểm tra trạng thái **Đã ghi nhận**, **Đã hủy** hoặc **Chờ xử lý** khi đối chiếu chứng từ; xuất Excel từ kết quả đang lọc. Các dòng bill có nút mở rộng để xem thông tin chi tiết.
 
 ### Báo cáo
+
+![Báo cáo tài chính với tổng thu, tổng chi, lợi nhuận gộp và biểu đồ theo ngày — dữ liệu minh họa](docs/screenshots/financial-report.png)
 
 Trang **Báo cáo** dành cho admin, mặc định mở **Tháng này**. Có khoảng thời gian nhanh **Hôm nay**, **Tháng này**, **Quý này** hoặc chọn khoảng ngày. Báo cáo loại chứng từ đã hủy khỏi phần tính tổng.
 
@@ -237,6 +257,8 @@ Nếu thấy **Không có chứng từ trong kỳ**, kiểm tra hai mốc ngày 
 Tổng thu và tổng chi là chỉ số tổng hợp từ chứng từ trong app, không khẳng định đã đối soát tiền mặt/ngân hàng. Lợi nhuận gộp không đồng nghĩa lợi nhuận ròng sau thuế và chi phí vận hành. Theo dõi cảnh báo thiếu snapshot giá vốn khi đọc số liệu.
 
 ### Cài đặt, tài khoản và giao diện
+
+![Cài đặt thông tin doanh nghiệp, quản lý tài khoản và giao diện — thông tin minh họa](docs/screenshots/settings.png)
 
 - Admin lưu **Tên doanh nghiệp**, **Địa chỉ**, **Số điện thoại** tại **Cài đặt hệ thống**.
 - Bật/tắt **Chế độ Ban đêm (Dark Mode)** để đổi giao diện.
@@ -263,6 +285,8 @@ Các phiếu nhập, xuất và bán mở cửa sổ xem trước riêng trong E
 Chọn thư mục tài liệu ngoài thư mục cài cho file xuất. Excel/PDF phục vụ đọc và đối chiếu; chúng không thay thế bản sao lưu JSON và không phải file để nhập lại toàn bộ kho.
 
 ## Sao lưu và khôi phục
+
+![Khu vực tạo bản sao lưu JSON và chọn tệp khôi phục trong phiên tài liệu ngoại tuyến](docs/screenshots/backup-restore.png)
 
 Tính năng nằm trong **Cài đặt → Sao lưu & Khôi phục dữ liệu**, chỉ dành cho admin và cần các Cloud Functions tương ứng đã triển khai.
 
