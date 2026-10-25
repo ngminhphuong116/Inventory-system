@@ -6,6 +6,8 @@ Dữ liệu nghiệp vụ được lưu trên **Firebase của đơn vị sử d
 
 **Phiên bản:** 1.0.0 · **Bản đóng gói:** Windows x64 · **Công nghệ:** Electron, React, TypeScript, Firebase.
 
+[Tải bộ cài Windows x64](https://github.com/ngminhphuong116/Inventory-system/releases/download/v1.0.0/QuanLyKhoHang-1.0.0-windows-x64-setup.exe) · [Trang phát hành và SHA256](https://github.com/ngminhphuong116/Inventory-system/releases/tag/v1.0.0)
+
 ## Mục lục
 
 - [Tổng quan chức năng](#tổng-quan-chức-năng)
@@ -72,7 +74,7 @@ Người dùng **bộ cài** không cần cài Node.js, npm, Java, Python, Micro
 
 ## Tải và cài đặt
 
-**Trạng thái hiện tại:** bản phát hành đã được chuẩn bị cục bộ, chưa có URL GitHub repository/Release được xác định. Các bước tải dưới đây áp dụng khi bản `v1.0.0` đã được đăng lên repository chính thức.
+**Trạng thái hiện tại:** bản `v1.0.0` đã được công bố ngày 25/10/2026 tại [GitHub Releases](https://github.com/ngminhphuong116/Inventory-system/releases/tag/v1.0.0). Bộ cài tải từ Release đã được tải lại và xác minh SHA256 khớp bản chuẩn bị.
 
 1. Mở mục **Releases** của repository và chọn bản `v1.0.0`.
 2. Trong **Assets**, tải:
