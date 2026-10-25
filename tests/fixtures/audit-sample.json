@@ -1,0 +1,42 @@
+{
+  "products": {
+    "product-1": {
+      "code": "TEST-01",
+      "name": "Sản phẩm kiểm thử",
+      "quantity": 4,
+      "status": "Normal"
+    }
+  },
+  "users": {
+    "admin-1": {
+      "role": "admin",
+      "status": "active"
+    }
+  },
+  "importTickets": {
+    "import-1": {
+      "invoiceNo": "TEST-N-01",
+      "operationId": "test-operation-1",
+      "status": "active",
+      "createdAt": 1,
+      "createdByUid": "admin-1",
+      "totalAmount": 20,
+      "items": [
+        {
+          "productId": "product-1",
+          "quantity": 2,
+          "lineTotal": 20
+        }
+      ]
+    }
+  },
+  "exportTickets": {},
+  "salesTickets": {},
+  "operations": {
+    "test-operation-1": {
+      "action": "create",
+      "type": "import",
+      "ticketKey": "import-1"
+    }
+  }
+}

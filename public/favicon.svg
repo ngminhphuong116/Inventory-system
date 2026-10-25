@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Nền tròn gradient xanh -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1890ff"/>
+      <stop offset="100%" style="stop-color:#0050b3"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="48" fill="url(#bg)"/>
+
+  <!-- Mái kho -->
+  <polygon points="128,40 220,95 36,95" fill="white" opacity="0.95"/>
+
+  <!-- Thân kho -->
+  <rect x="52" y="95" width="152" height="105" rx="4" fill="white" opacity="0.9"/>
+
+  <!-- Cửa kho (giữa) -->
+  <rect x="100" y="130" width="56" height="70" rx="4" fill="#1890ff"/>
+
+  <!-- Tay nắm cửa -->
+  <circle cx="144" cy="168" r="5" fill="white"/>
+
+  <!-- Cửa sổ trái -->
+  <rect x="66" y="115" width="28" height="24" rx="3" fill="#e6f7ff" stroke="#1890ff" stroke-width="2"/>
+  <line x1="80" y1="115" x2="80" y2="139" stroke="#1890ff" stroke-width="1.5"/>
+  <line x1="66" y1="127" x2="94" y2="127" stroke="#1890ff" stroke-width="1.5"/>
+
+  <!-- Cửa sổ phải -->
+  <rect x="162" y="115" width="28" height="24" rx="3" fill="#e6f7ff" stroke="#1890ff" stroke-width="2"/>
+  <line x1="176" y1="115" x2="176" y2="139" stroke="#1890ff" stroke-width="1.5"/>
+  <line x1="162" y1="127" x2="190" y2="127" stroke="#1890ff" stroke-width="1.5"/>
+
+  <!-- Ống khói nhỏ -->
+  <rect x="170" y="58" width="14" height="32" rx="3" fill="white" opacity="0.7"/>
+
+  <!-- Đường nền -->
+  <rect x="36" y="200" width="184" height="8" rx="4" fill="white" opacity="0.3"/>
+</svg>

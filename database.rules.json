@@ -1,0 +1,184 @@
+{
+  "rules": {
+    ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() == 'admin' && (root.child('users').child(auth.uid).child('status').val() == 'active' || !root.child('users').child(auth.uid).child('status').exists()) && !root.child('users').child(auth.uid).child('companyId').exists() && !root.child('users').child(auth.uid).child('branchId').exists()",
+    ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() == 'admin' && (root.child('users').child(auth.uid).child('status').val() == 'active' || !root.child('users').child(auth.uid).child('status').exists()) && !root.child('users').child(auth.uid).child('companyId').exists() && !root.child('users').child(auth.uid).child('branchId').exists()",
+    "users": {
+      ".indexOn": ["scopeKey"],
+      ".read": "auth != null && query.orderByChild == 'scopeKey' && query.equalTo == root.child('users').child(auth.uid).child('scopeKey').val() && root.child('users').child(auth.uid).child('role').val() == 'admin' && root.child('users').child(auth.uid).child('status').val() == 'active'",
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid != $uid && root.child('users').child(auth.uid).child('role').val() == 'admin' && root.child('users').child(auth.uid).child('status').val() == 'active' && data.exists() && data.child('role').val() != 'admin' && data.child('companyId').val() == root.child('users').child(auth.uid).child('companyId').val() && data.child('branchId').val() == root.child('users').child(auth.uid).child('branchId').val() && data.child('scopeKey').val() == root.child('users').child(auth.uid).child('scopeKey').val()",
+        ".validate": "(!data.child('companyId').exists() && !data.child('branchId').exists() && data.child('role').val() == 'admin' && newData.child('email').val() == data.child('email').val() && newData.child('role').val() == data.child('role').val() && newData.child('status').val() == data.child('status').val() && !newData.child('companyId').exists() && !newData.child('branchId').exists() && !newData.child('scopeKey').exists()) || (newData.hasChildren(['email', 'role', 'status', 'companyId', 'branchId', 'scopeKey']) && newData.child('email').val() == data.child('email').val() && newData.child('role').val() == data.child('role').val() && newData.child('permissions').child('product').val() == data.child('permissions').child('product').val() && newData.child('permissions').child('import').val() == data.child('permissions').child('import').val() && newData.child('permissions').child('export').val() == data.child('permissions').child('export').val() && newData.child('permissions').child('sales').val() == data.child('permissions').child('sales').val() && newData.child('permissions').child('history').val() == data.child('permissions').child('history').val() && newData.child('permissions').child('report').val() == data.child('permissions').child('report').val() && newData.child('companyId').val() == data.child('companyId').val() && newData.child('branchId').val() == data.child('branchId').val() && newData.child('scopeKey').val() == data.child('scopeKey').val() && (newData.child('status').val() == 'active' || newData.child('status').val() == 'disabled'))"
+      }
+    },
+    "companies": {
+      "$companyId": {
+        "branches": {
+          "$branchId": {
+            ".read": "auth != null && root.child('users').child(auth.uid).child('status').val() == 'active' && root.child('users').child(auth.uid).child('companyId').val() == $companyId && root.child('users').child(auth.uid).child('branchId').val() == $branchId && root.child('users').child(auth.uid).child('scopeKey').val() == $companyId + '__' + $branchId",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('status').val() == 'active' && root.child('users').child(auth.uid).child('companyId').val() == $companyId && root.child('users').child(auth.uid).child('branchId').val() == $branchId && root.child('users').child(auth.uid).child('scopeKey').val() == $companyId + '__' + $branchId && (root.child('users').child(auth.uid).child('role').val() == 'admin' || (root.child('users').child(auth.uid).child('role').val() == 'staff' && (root.child('users').child(auth.uid).child('permissions').child('import').val() == true || root.child('users').child(auth.uid).child('permissions').child('export').val() == true || root.child('users').child(auth.uid).child('permissions').child('sales').val() == true)))",
+            "products": {
+              "$productId": {
+                ".validate": "newData.hasChildren(['code', 'name', 'quantity', 'companyId', 'branchId']) && newData.child('companyId').val() == $companyId && newData.child('branchId').val() == $branchId && newData.child('quantity').isNumber() && newData.child('quantity').val() >= 0 && (!data.exists() ? (root.child('users').child(auth.uid).child('role').val() == 'admin' && newData.child('categoryId').isString() && (root.child('companies').child($companyId).child('branches').child($branchId).child('categories').child(newData.child('categoryId').val()).exists() || root.child('companies').child($companyId).child('branches').child($branchId).child('productCategories').child(newData.child('categoryId').val()).exists())) : true)"
+              }
+            },
+            "categories": {
+              "$categoryId": {
+                ".validate": "(data.exists() && newData.exists() && newData.child('name').val() == data.child('name').val() && newData.child('companyId').val() == data.child('companyId').val() && newData.child('branchId').val() == data.child('branchId').val() && newData.child('createdByUid').val() == data.child('createdByUid').val() && newData.child('createdAt').val() == data.child('createdAt').val()) || (newData.hasChildren(['name', 'companyId', 'branchId', 'createdByUid']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('companyId').val() == $companyId && newData.child('branchId').val() == $branchId && root.child('users').child(auth.uid).child('role').val() == 'admin')",
+                "name": { ".validate": true },
+                "companyId": { ".validate": true },
+                "branchId": { ".validate": true },
+                "createdByUid": { ".validate": true },
+                "createdAt": { ".validate": true },
+                "$other": { ".validate": "newData.val() == data.val()" }
+              }
+            },
+            "suppliers": {
+              "$supplierId": {
+                ".validate": "(data.exists() && newData.exists() && newData.child('name').val() == data.child('name').val() && newData.child('companyId').val() == data.child('companyId').val() && newData.child('branchId').val() == data.child('branchId').val() && newData.child('createdByUid').val() == data.child('createdByUid').val() && newData.child('createdAt').val() == data.child('createdAt').val()) || (newData.hasChildren(['name', 'companyId', 'branchId', 'createdByUid']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('companyId').val() == $companyId && newData.child('branchId').val() == $branchId && root.child('users').child(auth.uid).child('role').val() == 'admin')",
+                "name": { ".validate": true },
+                "companyId": { ".validate": true },
+                "branchId": { ".validate": true },
+                "createdByUid": { ".validate": true },
+                "createdAt": { ".validate": true },
+                "$other": { ".validate": "newData.val() == data.val()" }
+              }
+            },
+            "productCategories": {
+              ".validate": "newData.exists()"
+            },
+            "partners": {
+              ".validate": "newData.exists()"
+            },
+            "settings": {
+              ".validate": "(data.exists() && newData.exists() && newData.child('businessName').val() == data.child('businessName').val() && newData.child('address').val() == data.child('address').val() && newData.child('phone').val() == data.child('phone').val() && newData.child('companyId').val() == data.child('companyId').val() && newData.child('branchId').val() == data.child('branchId').val() && newData.child('updatedAt').val() == data.child('updatedAt').val() && newData.child('updatedByUid').val() == data.child('updatedByUid').val()) || (newData.hasChildren(['businessName', 'companyId', 'branchId', 'updatedByUid']) && newData.child('businessName').isString() && newData.child('businessName').val().length > 0 && newData.child('companyId').val() == $companyId && newData.child('branchId').val() == $branchId && newData.child('updatedByUid').val() == auth.uid && root.child('users').child(auth.uid).child('role').val() == 'admin')",
+              "businessName": { ".validate": true },
+              "address": { ".validate": true },
+              "phone": { ".validate": true },
+              "companyId": { ".validate": true },
+              "branchId": { ".validate": true },
+              "updatedAt": { ".validate": true },
+              "updatedByUid": { ".validate": true },
+              "$other": { ".validate": "newData.val() == data.val()" }
+            },
+            "importTickets": {
+              "$ticketId": {
+                ".validate": "newData.hasChildren(['invoiceNo', 'operationId', 'status', 'companyId', 'branchId', 'createdByUid', 'createdAt', 'items', 'totalAmount']) && newData.child('companyId').val() == $companyId && newData.child('branchId').val() == $branchId && (newData.child('createdByUid').val() == data.child('createdByUid').val() || (!data.exists() && newData.child('createdByUid').val() == auth.uid)) && newData.child('totalAmount').isNumber() && newData.child('totalAmount').val() >= 0 && (newData.child('status').val() == 'active' || newData.child('status').val() == 'cancelled') && (root.child('users').child(auth.uid).child('role').val() == 'admin' || root.child('users').child(auth.uid).child('permissions').child('import').val() == true)"
+              }
+            },
+            "exportTickets": {
+              "$ticketId": {
+                ".validate": "newData.hasChildren(['invoiceNo', 'operationId', 'status', 'companyId', 'branchId', 'createdByUid', 'createdAt', 'items', 'totalAmount']) && newData.child('companyId').val() == $companyId && newData.child('branchId').val() == $branchId && (newData.child('createdByUid').val() == data.child('createdByUid').val() || (!data.exists() && newData.child('createdByUid').val() == auth.uid)) && newData.child('totalAmount').isNumber() && newData.child('totalAmount').val() >= 0 && (newData.child('status').val() == 'active' || newData.child('status').val() == 'cancelled') && (root.child('users').child(auth.uid).child('role').val() == 'admin' || root.child('users').child(auth.uid).child('permissions').child('export').val() == true)"
+              }
+            },
+            "salesTickets": {
+              "$ticketId": {
+                ".validate": "newData.hasChildren(['invoiceNo', 'operationId', 'status', 'companyId', 'branchId', 'createdByUid', 'createdAt', 'items', 'totalAmount']) && newData.child('companyId').val() == $companyId && newData.child('branchId').val() == $branchId && (newData.child('createdByUid').val() == data.child('createdByUid').val() || (!data.exists() && newData.child('createdByUid').val() == auth.uid)) && newData.child('totalAmount').isNumber() && newData.child('totalAmount').val() >= 0 && (newData.child('status').val() == 'active' || newData.child('status').val() == 'cancelled') && (root.child('users').child(auth.uid).child('role').val() == 'admin' || root.child('users').child(auth.uid).child('permissions').child('sales').val() == true)"
+              }
+            },
+            "operations": {
+              "$operationId": {
+                ".validate": "(data.exists() && newData.child('action').val() == data.child('action').val() && newData.child('type').val() == data.child('type').val() && newData.child('ticketKey').val() == data.child('ticketKey').val() && newData.child('actorUid').val() == data.child('actorUid').val() && newData.child('createdAt').val() == data.child('createdAt').val()) || (!data.exists() && newData.hasChildren(['action', 'type', 'ticketKey', 'actorUid', 'createdAt']) && newData.child('actorUid').val() == auth.uid && (newData.child('action').val() == 'create' || newData.child('action').val() == 'cancel') && (newData.child('type').val() == 'import' || newData.child('type').val() == 'export' || newData.child('type').val() == 'sale'))"
+              }
+            },
+            "auditLogs": {
+              "$logId": {
+                ".validate": "(data.exists() && newData.child('action').val() == data.child('action').val() && newData.child('type').val() == data.child('type').val() && newData.child('ticketKey').val() == data.child('ticketKey').val() && newData.child('actorUid').val() == data.child('actorUid').val() && newData.child('actorEmail').val() == data.child('actorEmail').val() && newData.child('createdAt').val() == data.child('createdAt').val() && newData.child('totalAmount').val() == data.child('totalAmount').val() && newData.child('reason').val() == data.child('reason').val()) || (!data.exists() && newData.hasChildren(['action', 'type', 'ticketKey', 'actorUid', 'actorEmail', 'createdAt']) && newData.child('actorUid').val() == auth.uid)"
+              }
+            },
+            "stockMovements": {
+              "$movementId": {
+                ".validate": "(data.exists() && newData.exists() && newData.child('type').val() == data.child('type').val() && newData.child('referenceId').val() == data.child('referenceId').val() && newData.child('referenceCode').val() == data.child('referenceCode').val() && newData.child('productId').val() == data.child('productId').val() && newData.child('productName').val() == data.child('productName').val() && newData.child('quantity').val() == data.child('quantity').val() && newData.child('beforeStock').val() == data.child('beforeStock').val() && newData.child('afterStock').val() == data.child('afterStock').val() && newData.child('unitPrice').val() == data.child('unitPrice').val() && newData.child('amount').val() == data.child('amount').val() && newData.child('createdAt').val() == data.child('createdAt').val() && newData.child('createdBy').val() == data.child('createdBy').val()) || (!data.exists() && newData.hasChildren(['type', 'referenceId', 'referenceCode', 'productId', 'productName', 'quantity', 'beforeStock', 'afterStock', 'unitPrice', 'amount', 'createdAt', 'createdBy']) && newData.child('type').val() == 'sale' && newData.child('quantity').isNumber() && newData.child('quantity').val() > 0 && newData.child('beforeStock').isNumber() && newData.child('afterStock').isNumber() && newData.child('afterStock').val() >= 0 && newData.child('unitPrice').isNumber() && newData.child('unitPrice').val() >= 0 && newData.child('amount').isNumber() && newData.child('amount').val() >= 0)"
+              }
+            },
+            "productMutations": {
+              "$requestId": {
+                ".validate": "newData.val() == data.val() || (newData.hasChildren(['action', 'productId', 'actorUid', 'createdAt']) && newData.child('actorUid').val() == auth.uid && root.child('users').child(auth.uid).child('role').val() == 'admin')"
+              }
+            },
+            "vouchers": {
+              "$voucherId": {
+                ".validate": "newData.val() == data.val() || root.child('users').child(auth.uid).child('role').val() == 'admin'"
+              }
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
+      }
+    },
+    "products": {
+      "$productId": {
+        ".validate": "newData.hasChildren(['code', 'name', 'quantity']) && newData.child('code').isString() && newData.child('code').val().length > 0 && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('quantity').isNumber() && newData.child('quantity').val() >= 0 && (!data.exists() ? (newData.child('categoryId').isString() && (root.child('categories').child(newData.child('categoryId').val()).exists() || root.child('productCategories').child(newData.child('categoryId').val()).exists())) : true)"
+      }
+    },
+    "categories": {
+      "$categoryId": {
+        ".validate": "(data.exists() && newData.exists() && newData.child('name').val() == data.child('name').val() && newData.child('createdByUid').val() == data.child('createdByUid').val() && newData.child('createdAt').val() == data.child('createdAt').val()) || (newData.hasChildren(['name', 'createdByUid']) && newData.child('name').isString() && newData.child('name').val().length > 0 && root.child('users').child(auth.uid).child('role').val() == 'admin')",
+        "name": { ".validate": true },
+        "createdByUid": { ".validate": true },
+        "createdAt": { ".validate": true },
+        "$other": { ".validate": "newData.val() == data.val()" }
+      }
+    },
+    "suppliers": {
+      "$supplierId": {
+        ".validate": "(data.exists() && newData.exists() && newData.child('name').val() == data.child('name').val() && newData.child('createdByUid').val() == data.child('createdByUid').val() && newData.child('createdAt').val() == data.child('createdAt').val()) || (newData.hasChildren(['name', 'createdByUid']) && newData.child('name').isString() && newData.child('name').val().length > 0 && root.child('users').child(auth.uid).child('role').val() == 'admin')",
+        "name": { ".validate": true },
+        "createdByUid": { ".validate": true },
+        "createdAt": { ".validate": true },
+        "$other": { ".validate": "newData.val() == data.val()" }
+      }
+    },
+    "settings": {
+      ".validate": "(data.exists() && newData.exists() && newData.child('businessName').val() == data.child('businessName').val() && newData.child('address').val() == data.child('address').val() && newData.child('phone').val() == data.child('phone').val() && newData.child('updatedAt').val() == data.child('updatedAt').val() && newData.child('updatedByUid').val() == data.child('updatedByUid').val()) || (newData.hasChildren(['businessName', 'updatedByUid']) && newData.child('businessName').isString() && newData.child('businessName').val().length > 0 && newData.child('updatedByUid').val() == auth.uid && root.child('users').child(auth.uid).child('role').val() == 'admin')",
+      "businessName": { ".validate": true },
+      "address": { ".validate": true },
+      "phone": { ".validate": true },
+      "updatedAt": { ".validate": true },
+      "updatedByUid": { ".validate": true },
+      "$other": { ".validate": "newData.val() == data.val()" }
+    },
+    "importTickets": {
+      "$ticketId": {
+        ".validate": "newData.hasChildren(['invoiceNo', 'operationId', 'status', 'createdByUid', 'createdAt', 'items', 'totalAmount']) && newData.child('invoiceNo').isString() && newData.child('totalAmount').isNumber() && newData.child('totalAmount').val() >= 0 && (newData.child('status').val() == 'active' || newData.child('status').val() == 'cancelled')"
+      }
+    },
+    "exportTickets": {
+      "$ticketId": {
+        ".validate": "newData.hasChildren(['invoiceNo', 'operationId', 'status', 'createdByUid', 'createdAt', 'items', 'totalAmount']) && newData.child('invoiceNo').isString() && newData.child('totalAmount').isNumber() && newData.child('totalAmount').val() >= 0 && (newData.child('status').val() == 'active' || newData.child('status').val() == 'cancelled')"
+      }
+    },
+    "salesTickets": {
+      "$ticketId": {
+        ".validate": "newData.hasChildren(['invoiceNo', 'operationId', 'status', 'createdByUid', 'createdAt', 'items', 'totalAmount']) && newData.child('invoiceNo').isString() && newData.child('totalAmount').isNumber() && newData.child('totalAmount').val() >= 0 && (newData.child('status').val() == 'active' || newData.child('status').val() == 'cancelled')"
+      }
+    },
+    "operations": {
+      "$operationId": {
+        ".validate": "(data.exists() && newData.child('action').val() == data.child('action').val() && newData.child('type').val() == data.child('type').val() && newData.child('ticketKey').val() == data.child('ticketKey').val() && newData.child('actorUid').val() == data.child('actorUid').val() && newData.child('createdAt').val() == data.child('createdAt').val()) || (!data.exists() && newData.hasChildren(['action', 'type', 'ticketKey', 'actorUid', 'createdAt']) && newData.child('actorUid').val() == auth.uid && (newData.child('action').val() == 'create' || newData.child('action').val() == 'cancel') && (newData.child('type').val() == 'import' || newData.child('type').val() == 'export' || newData.child('type').val() == 'sale'))"
+      }
+    },
+    "auditLogs": {
+      "$logId": {
+        ".validate": "(data.exists() && newData.val() == data.val()) || (!data.exists() && newData.hasChildren(['action', 'type', 'ticketKey', 'actorUid', 'actorEmail', 'createdAt']) && newData.child('actorUid').val() == auth.uid)"
+      }
+    },
+    "stockMovements": {
+      "$movementId": {
+        ".validate": "(data.exists() && newData.exists() && newData.child('type').val() == data.child('type').val() && newData.child('referenceId').val() == data.child('referenceId').val() && newData.child('referenceCode').val() == data.child('referenceCode').val() && newData.child('productId').val() == data.child('productId').val() && newData.child('productName').val() == data.child('productName').val() && newData.child('quantity').val() == data.child('quantity').val() && newData.child('beforeStock').val() == data.child('beforeStock').val() && newData.child('afterStock').val() == data.child('afterStock').val() && newData.child('unitPrice').val() == data.child('unitPrice').val() && newData.child('amount').val() == data.child('amount').val() && newData.child('createdAt').val() == data.child('createdAt').val() && newData.child('createdBy').val() == data.child('createdBy').val()) || (!data.exists() && newData.hasChildren(['type', 'referenceId', 'referenceCode', 'productId', 'productName', 'quantity', 'beforeStock', 'afterStock', 'unitPrice', 'amount', 'createdAt', 'createdBy']) && newData.child('type').val() == 'sale' && newData.child('quantity').isNumber() && newData.child('quantity').val() > 0 && newData.child('beforeStock').isNumber() && newData.child('afterStock').isNumber() && newData.child('afterStock').val() >= 0 && newData.child('unitPrice').isNumber() && newData.child('unitPrice').val() >= 0 && newData.child('amount').isNumber() && newData.child('amount').val() >= 0)"
+      }
+    },
+    "productMutations": {
+      "$requestId": {
+        ".validate": "newData.val() == data.val() || (newData.hasChildren(['action', 'productId', 'actorUid', 'createdAt']) && newData.child('actorUid').val() == auth.uid)"
+      }
+    },
+    "vouchers": {
+      "$voucherId": {
+        ".validate": "newData.val() == data.val() || root.child('users').child(auth.uid).child('role').val() == 'admin'"
+      }
+    }
+  }
+}
